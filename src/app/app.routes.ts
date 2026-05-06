@@ -3,8 +3,9 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/cpf',
-    pathMatch: 'full',
+    loadComponent: () =>
+      import('./pages/home/home.component').then(m => m.HomeComponent),
+    title: 'Developer Workspace — Gerador e Validador de Dados',
   },
   // Documentos e Registros
   {
