@@ -65,6 +65,48 @@ export const routes: Routes = [
     title: 'Gerador e Validador de UUID — DevUtils',
   },
   {
+    path: 'massa-dados',
+    loadComponent: () =>
+      import('./pages/documentos/massa-dados/massa-dados.component').then(m => m.MassaDadosComponent),
+    title: 'Gerador de Massa de Dados (JSON/CSV) — DevUtils',
+  },
+  {
+    path: 'cep',
+    loadComponent: () =>
+      import('./pages/documentos/cep/cep.component').then(m => m.CepComponent),
+    title: 'Gerador de CEP e Endereços — DevUtils',
+  },
+  {
+    path: 'url',
+    loadComponent: () =>
+      import('./pages/devtools/url/url.component').then(m => m.UrlComponent),
+    title: 'URL Encoder & Decoder — DevUtils',
+  },
+  {
+    path: 'hash',
+    loadComponent: () =>
+      import('./pages/devtools/hash/hash.component').then(m => m.HashComponent),
+    title: 'Gerador de Hashes (MD5, SHA-256) — DevUtils',
+  },
+  {
+    path: 'sql',
+    loadComponent: () =>
+      import('./pages/devtools/sql/sql.component').then(m => m.SqlComponent),
+    title: 'Formatador de SQL — DevUtils',
+  },
+  {
+    path: 'diff',
+    loadComponent: () =>
+      import('./pages/devtools/diff/diff.component').then(m => m.DiffComponent),
+    title: 'Text Diff (Comparador de Códigos) — DevUtils',
+  },
+  {
+    path: 'senha',
+    loadComponent: () =>
+      import('./pages/devtools/senha/senha.component').then(m => m.SenhaComponent),
+    title: 'Gerador de Senhas Fortes — DevUtils',
+  },
+  {
     path: '**',
     redirectTo: '/cpf',
   },

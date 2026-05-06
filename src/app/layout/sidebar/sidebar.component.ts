@@ -141,6 +141,8 @@ export class SidebarComponent {
         { label: 'CNH', path: '/cnh', icon: null, description: 'Validar CNH', svgIcon: this.svgIcon('<rect width="18" height="12" x="3" y="6" rx="2"/><path d="M3 10h18"/><circle cx="9" cy="15" r="1"/><path d="M13 15h4"/>') },
         { label: 'PIS / PASEP', path: '/pis', icon: null, description: 'Validar PIS/PASEP', svgIcon: this.svgIcon('<path d="M4 7l8 8 8-8"/><path d="M4 13l8 8 8-8"/>') },
         { label: 'Título de Eleitor', path: '/titulo-eleitor', icon: null, description: 'Validar Título de Eleitor', svgIcon: this.svgIcon('<path d="m9 12 2 2 4-4"/><path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7z"/><path d="M22 19H2"/>') },
+        { label: 'Massa de Dados', path: '/massa-dados', icon: null, description: 'Gerador de Massa de Dados (JSON/CSV)', svgIcon: this.svgIcon('<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/>') },
+        { label: 'CEP e Endereço', path: '/cep', icon: null, description: 'Gerador e busca de CEP', svgIcon: this.svgIcon('<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>') },
       ],
     },
     {
@@ -150,6 +152,11 @@ export class SidebarComponent {
         { label: 'JSON', path: '/json', icon: null, description: 'Formatar e validar JSON', svgIcon: this.svgIcon('<path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>') },
         { label: 'Base64', path: '/base64', icon: null, description: 'Codificar/Decodificar Base64', svgIcon: this.svgIcon('<rect width="4" height="4" x="3" y="15"/><rect width="4" height="4" x="17" y="15"/><rect width="4" height="4" x="10" y="15"/><rect width="4" height="4" x="3" y="8"/><rect width="4" height="4" x="17" y="8"/><rect width="4" height="4" x="10" y="8"/><rect width="4" height="4" x="10" y="1"/><rect width="4" height="4" x="3" y="1"/><rect width="4" height="4" x="17" y="1"/>') },
         { label: 'UUID', path: '/uuid', icon: null, description: 'Gerar e validar UUID v4', svgIcon: this.svgIcon('<path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10"/><path d="M12 18a6 6 0 1 0-6-6"/><circle cx="12" cy="12" r="2"/>') },
+        { label: 'URL Encoder', path: '/url', icon: null, description: 'URL Encode / Decode', svgIcon: this.svgIcon('<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>') },
+        { label: 'Gerador Hash', path: '/hash', icon: null, description: 'Gerador de Hashes (MD5, SHA)', svgIcon: this.svgIcon('<line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/>') },
+        { label: 'Formatador SQL', path: '/sql', icon: null, description: 'SQL Beautifier', svgIcon: this.svgIcon('<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 15 21.84"/><path d="M21 5V12"/><path d="M3 12A9 3 0 0 0 12 15"/><path d="m16 19 2 2 4-4"/>') },
+        { label: 'Text Diff', path: '/diff', icon: null, description: 'Comparador de Textos', svgIcon: this.svgIcon('<path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22v-8"/><path d="M3 21h18"/>') },
+        { label: 'Senhas', path: '/senha', icon: null, description: 'Gerador de Senhas Fortes', svgIcon: this.svgIcon('<rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>') },
       ],
     },
   ];
