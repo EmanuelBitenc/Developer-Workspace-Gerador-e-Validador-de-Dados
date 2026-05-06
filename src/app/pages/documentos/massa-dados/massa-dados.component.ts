@@ -44,7 +44,7 @@ interface GeneratedData {
               <button class="tab" [class.active]="format === 'json'" (click)="format = 'json'">JSON</button>
               <button class="tab" [class.active]="format === 'csv'" (click)="format = 'csv'">CSV</button>
             </div>
-            <app-copy-btn [textToCopy]="output"></app-copy-btn>
+            <app-copy-btn [text]="output"></app-copy-btn>
           </div>
           <textarea class="editor-textarea" readonly [value]="output"></textarea>
         </div>
@@ -117,7 +117,7 @@ export class MassaDadosComponent {
     for (let i = 0; i < this.quantity; i++) {
       const fName = this.firstNames[Math.floor(Math.random() * this.firstNames.length)];
       const lName = this.lastNames[Math.floor(Math.random() * this.lastNames.length)];
-      const email = \`\${fName.toLowerCase()}.\${lName.toLowerCase()}.\${Math.floor(Math.random() * 9999)}@example.com\`;
+      const email = `${fName.toLowerCase()}.${lName.toLowerCase()}.${Math.floor(Math.random() * 9999)}@example.com`;
       
       const year = 1960 + Math.floor(Math.random() * 40);
       const month = String(1 + Math.floor(Math.random() * 12)).padStart(2, '0');
@@ -125,9 +125,9 @@ export class MassaDadosComponent {
 
       data.push({
         id: crypto.randomUUID(),
-        nome: \`\${fName} \${lName}\`,
-        cpf: this.docService.generateCpf(true),
-        dataNascimento: \`\${year}-\${month}-\${day}\`,
+        nome: `${fName} ${lName}`,
+        cpf: this.docService.generateCpf(),
+        dataNascimento: `${year}-${month}-${day}`,
         email: email
       });
     }
@@ -136,8 +136,8 @@ export class MassaDadosComponent {
       this.output = JSON.stringify(data, null, 2);
     } else {
       const headers = ['id', 'nome', 'cpf', 'dataNascimento', 'email'];
-      const rows = data.map(obj => \`\${obj.id},\${obj.nome},\${obj.cpf},\${obj.dataNascimento},\${obj.email}\`);
-      this.output = [headers.join(','), ...rows].join('\\n');
+      const rows = data.map(obj => `${obj.id},${obj.nome},${obj.cpf},${obj.dataNascimento},${obj.email}`);
+      this.output = [headers.join(','), ...rows].join('\n');
     }
   }
 }

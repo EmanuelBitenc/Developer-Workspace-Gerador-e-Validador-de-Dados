@@ -18,7 +18,7 @@ import { CopyBtnComponent } from '../../../shared/copy-btn/copy-btn.component';
       <div class="card max-w-2xl">
         <div class="password-display">
           <input type="text" class="password-input" [value]="password" readonly />
-          <app-copy-btn [textToCopy]="password"></app-copy-btn>
+          <app-copy-btn [text]="password"></app-copy-btn>
         </div>
 
         <div class="controls">

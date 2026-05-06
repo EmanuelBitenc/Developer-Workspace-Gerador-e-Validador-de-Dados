@@ -46,7 +46,7 @@ interface Address {
         <div class="card p-6">
           <div class="flex justify-between items-center mb-6">
             <h2 class="section-title mb-0">Endereço Gerado</h2>
-            <app-copy-btn [textToCopy]="formattedAddress"></app-copy-btn>
+            <app-copy-btn [text]="formattedAddress"></app-copy-btn>
           </div>
 
           <div class="address-grid">
@@ -154,10 +154,10 @@ export class CepComponent {
   }
 
   get formattedAddress(): string {
-    return \`CEP: \${this.currentAddress.cep}
-Logradouro: \${this.currentAddress.logradouro}
-Bairro: \${this.currentAddress.bairro}
-Cidade/UF: \${this.currentAddress.localidade} - \${this.currentAddress.uf}\`;
+    return `CEP: ${this.currentAddress.cep}
+Logradouro: ${this.currentAddress.logradouro}
+Bairro: ${this.currentAddress.bairro}
+Cidade/UF: ${this.currentAddress.localidade} - ${this.currentAddress.uf}`;
   }
 
   generateRandom() {
@@ -167,7 +167,7 @@ Cidade/UF: \${this.currentAddress.localidade} - \${this.currentAddress.uf}\`;
   }
 
   async fetchCep() {
-    const cleanCep = this.searchCep.replace(/\\D/g, '');
+    const cleanCep = this.searchCep.replace(/\D/g, '');
     if (cleanCep.length !== 8) {
       this.hasError = true;
       return;
@@ -177,7 +177,7 @@ Cidade/UF: \${this.currentAddress.localidade} - \${this.currentAddress.uf}\`;
     this.hasError = false;
 
     try {
-      const res = await fetch(\`https://viacep.com.br/ws/\${cleanCep}/json/\`);
+      const res = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
       const data = await res.json();
 
       if (data.erro) {

@@ -39,7 +39,7 @@ import { CopyBtnComponent } from '../../../shared/copy-btn/copy-btn.component';
         <div class="card panel">
           <div class="panel-header">
             <h2 class="panel-title">Texto Codificado (Encoded)</h2>
-            <app-copy-btn [textToCopy]="encodedText"></app-copy-btn>
+            <app-copy-btn [text]="encodedText"></app-copy-btn>
           </div>
           <div class="panel-body">
             <textarea

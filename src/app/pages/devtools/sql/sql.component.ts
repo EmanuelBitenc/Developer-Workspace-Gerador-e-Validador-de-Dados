@@ -39,7 +39,7 @@ import { format } from 'sql-formatter';
         <div class="card panel">
           <div class="panel-header">
             <h2 class="panel-title">SQL Formatado</h2>
-            <app-copy-btn [textToCopy]="outputSql"></app-copy-btn>
+            <app-copy-btn [text]="outputSql"></app-copy-btn>
           </div>
           <div class="panel-body">
             <textarea
@@ -107,7 +107,7 @@ export class SqlComponent {
     try {
       this.outputSql = format(this.inputSql, {
         language: 'postgresql', 
-        uppercase: true,
+        keywordCase: 'upper',
         linesBetweenQueries: 2,
       });
     } catch (e) {

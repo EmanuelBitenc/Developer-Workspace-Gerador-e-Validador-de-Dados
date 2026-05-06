@@ -37,7 +37,7 @@ import * as CryptoJS from 'crypto-js';
           <div class="hash-group">
             <div class="hash-header">
               <span class="hash-title">MD5</span>
-              <app-copy-btn [textToCopy]="md5Hash"></app-copy-btn>
+              <app-copy-btn [text]="md5Hash"></app-copy-btn>
             </div>
             <input type="text" class="hash-input" [value]="md5Hash" readonly />
           </div>
@@ -45,7 +45,7 @@ import * as CryptoJS from 'crypto-js';
           <div class="hash-group">
             <div class="hash-header">
               <span class="hash-title">SHA-1</span>
-              <app-copy-btn [textToCopy]="sha1Hash"></app-copy-btn>
+              <app-copy-btn [text]="sha1Hash"></app-copy-btn>
             </div>
             <input type="text" class="hash-input" [value]="sha1Hash" readonly />
           </div>
@@ -53,7 +53,7 @@ import * as CryptoJS from 'crypto-js';
           <div class="hash-group">
             <div class="hash-header">
               <span class="hash-title">SHA-256</span>
-              <app-copy-btn [textToCopy]="sha256Hash"></app-copy-btn>
+              <app-copy-btn [text]="sha256Hash"></app-copy-btn>
             </div>
             <input type="text" class="hash-input" [value]="sha256Hash" readonly />
           </div>
@@ -61,7 +61,7 @@ import * as CryptoJS from 'crypto-js';
           <div class="hash-group">
             <div class="hash-header">
               <span class="hash-title">SHA-512</span>
-              <app-copy-btn [textToCopy]="sha512Hash"></app-copy-btn>
+              <app-copy-btn [text]="sha512Hash"></app-copy-btn>
             </div>
             <textarea class="hash-input sha512-input" readonly [value]="sha512Hash"></textarea>
           </div>
