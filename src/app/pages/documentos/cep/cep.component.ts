@@ -34,7 +34,14 @@ interface Address {
             <label class="form-label">Buscar por CEP específico</label>
             <div class="flex gap-2">
               <input type="text" placeholder="Ex: 01001-000" [(ngModel)]="searchCep" (keyup.enter)="fetchCep()" class="form-input" />
-              <button class="btn btn-primary" (click)="fetchCep()" [disabled]="isLoading">Buscar</button>
+              <button class="btn btn-primary flex items-center justify-center gap-2" (click)="fetchCep()" [disabled]="isLoading">
+                @if (isLoading) {
+                  <svg class="spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+                  Buscando...
+                } @else {
+                  Buscar
+                }
+              </button>
             </div>
             @if (hasError) {
               <span class="error-text mt-2 block">CEP não encontrado ou inválido.</span>
@@ -114,6 +121,10 @@ interface Address {
       .btn-primary:hover { background: var(--color-border-subtle); }
       .btn:disabled { opacity: 0.5; cursor: not-allowed; }
       .w-full { width: 100%; }
+      .justify-center { justify-content: center; }
+      
+      .spinner { animation: spin 1s linear infinite; }
+      @keyframes spin { 100% { transform: rotate(360deg); } }
       
       .error-text { font-size: 12px; color: var(--color-error); }
       
