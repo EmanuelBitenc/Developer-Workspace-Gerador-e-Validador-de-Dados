@@ -182,6 +182,7 @@ Cidade/UF: ${this.currentAddress.localidade} - ${this.currentAddress.uf}`;
 
       if (data.erro) {
         this.hasError = true;
+        this.currentAddress = { cep: '', logradouro: '', bairro: '', localidade: '', uf: '' };
       } else {
         this.currentAddress = {
           cep: data.cep,
