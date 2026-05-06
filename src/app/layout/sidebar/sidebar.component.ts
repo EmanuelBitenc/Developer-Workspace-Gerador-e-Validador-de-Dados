@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface NavItem {
   label: string;
   path: string;
   icon: any;
   description: string;
-  svgIcon: string;
+  svgIcon: SafeHtml;
 }
 
 interface NavGroup {
@@ -23,18 +24,18 @@ interface NavGroup {
     }
     <aside class="sidebar" [class.open]="isOpen">
       <!-- Logo -->
-      <div class="sidebar-logo">
-        <div class="logo-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/>
-            <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>
-          </svg>
-        </div>
-        <div class="logo-text">
+      <a routerLink="/" class="sidebar-logo" (click)="closeSidebar.emit()">
+        <div class="logo-top">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/>
+              <path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/>
+            </svg>
+          </div>
           <span class="logo-name">Developer Workspace</span>
-          <span class="logo-tagline">Gerador e Validação de Dados</span>
         </div>
-      </div>
+        <span class="logo-tagline">Gerador e Validação de Dados</span>
+      </a>
 
       <!-- Navigation -->
       <nav class="sidebar-nav">
@@ -97,8 +98,15 @@ interface NavGroup {
         }
       }
       .sidebar-logo {
-        display: flex; align-items: center; gap: 10px;
+        display: flex; flex-direction: column; gap: 4px;
         padding: 20px 16px; border-bottom: 1px solid var(--color-border-subtle);
+        text-decoration: none; transition: background 0.15s ease; cursor: pointer;
+      }
+      .sidebar-logo:hover {
+        background: var(--color-bg-elevated);
+      }
+      .logo-top {
+        display: flex; align-items: center; gap: 10px;
       }
       .logo-icon {
         width: 30px; height: 30px;
@@ -106,9 +114,8 @@ interface NavGroup {
         border-radius: 8px; display: flex; align-items: center; justify-content: center;
         color: var(--color-accent-hover); flex-shrink: 0;
       }
-      .logo-text { display: flex; flex-direction: column; gap: 1px; }
       .logo-name { font-size: 14px; font-weight: 600; color: var(--color-text-primary); line-height: 1.2; }
-      .logo-tagline { font-size: 10px; color: var(--color-text-muted); letter-spacing: 0.3px; }
+      .logo-tagline { font-size: 10px; color: var(--color-text-muted); letter-spacing: 0.3px; padding-left: 2px; }
       .sidebar-nav { flex: 1; padding: 12px 10px; display: flex; flex-direction: column; gap: 20px; }
       .nav-group { display: flex; flex-direction: column; gap: 2px; }
       .nav-group-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.9px; color: var(--color-text-muted); padding: 0 8px; margin-bottom: 4px; }
@@ -128,8 +135,10 @@ export class SidebarComponent {
   @Input() isOpen = false;
   @Output() closeSidebar = new EventEmitter<void>();
 
-  private svgIcon(path: string): string {
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+  private sanitizer = inject(DomSanitizer);
+
+  private svgIcon(path: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(`<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`);
   }
 
   readonly navGroups: NavGroup[] = [

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SidebarComponent],
+  imports: [RouterOutlet, SidebarComponent, RouterLink],
   template: `
     <div class="app-shell">
       <app-sidebar [isOpen]="sidebarOpen" (closeSidebar)="sidebarOpen = false" />
@@ -15,7 +15,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
             <div class="breadcrumbs">
-              <span class="workspace-label">Developer Workspace</span>
+              <a routerLink="/" class="workspace-label">Developer Workspace</a>
               <span class="separator">/</span>
               <span class="slogan-text">Gerador e Validação de Dados</span>
             </div>
@@ -86,6 +86,11 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
         font-weight: 600;
         color: var(--color-text-primary);
         letter-spacing: 0.3px;
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      .workspace-label:hover {
+        color: var(--color-accent-hover);
       }
       
       .separator {
