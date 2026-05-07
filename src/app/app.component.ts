@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { SeoService } from './services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -118,6 +119,12 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     `,
   ],
 })
-export class App {
+export class App implements OnInit {
   sidebarOpen = false;
+
+  constructor(private seoService: SeoService) {}
+
+  ngOnInit() {
+    this.seoService.init();
+  }
 }
