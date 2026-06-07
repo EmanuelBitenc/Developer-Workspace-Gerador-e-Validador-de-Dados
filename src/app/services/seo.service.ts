@@ -33,6 +33,12 @@ export class SeoService {
       if (seoData) {
         this.updateMetaTags(seoData);
       }
+      const jsonLd = data['jsonLd'];
+      if (jsonLd) {
+        this.updateJsonLd(jsonLd);
+      } else {
+        this.removeJsonLd();
+      }
     });
   }
 
@@ -66,5 +72,22 @@ export class SeoService {
       link.setAttribute('href', canonicalUrl);
       this.doc.head.appendChild(link);
     }
+  }
+
+  private updateJsonLd(data: object | object[]) {
+    this.removeJsonLd();
+    const items = Array.isArray(data) ? data : [data];
+    items.forEach(item => {
+      const script = this.doc.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'dynamic-jsonld';
+      script.textContent = JSON.stringify(item);
+      this.doc.head.appendChild(script);
+    });
+  }
+
+  private removeJsonLd() {
+    const existing = this.doc.querySelectorAll('#dynamic-jsonld');
+    existing.forEach(el => el.remove());
   }
 }

@@ -19,13 +19,48 @@ export const routes: Routes = [
     path: 'cpf',
     loadComponent: () =>
       import('./pages/documentos/cpf/cpf.component').then(m => m.CpfComponent),
-    title: 'Validador e Gerador de CPF — DevUtils',
+    title: 'Validador de CPF Online — Verificar e Gerar CPF Válido Grátis',
     data: {
       seo: {
-        title: 'Validador e Gerador de CPF Válido — DevUtils',
-        description: 'Gere CPFs válidos para testes de software ou valide números de CPF rapidamente. Ferramenta gratuita para desenvolvedores.',
-        keywords: 'gerador de cpf, gerar cpf, validador de cpf, validar cpf, cpf para testes'
-      }
+        title: 'Validador de CPF Online — Verificar e Gerar CPF Válido Grátis',
+        description: 'Validador e Gerador de CPF online grátis. Validação matemática instantânea com algoritmo módulo 11, 100% privada no seu navegador. Ideal para testes de software e QA.',
+        keywords: 'validador de cpf, validador de cpf online, gerador de cpf, gerar cpf valido para teste, verificar digitos do cpf, algoritmo de validacao de cpf, gerar cpf com mascara, cpf para testes de software'
+      },
+      jsonLd: [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebApplication',
+          'name': 'Validador e Gerador de CPF Online',
+          'url': 'https://validador.dev.br/cpf',
+          'applicationCategory': 'DeveloperApplication',
+          'operatingSystem': 'All',
+          'browserRequirements': 'Requires JavaScript',
+          'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'BRL' },
+          'description': 'Ferramenta online gratuita para validar e gerar CPF para testes de software. Cálculo feito 100% no navegador garantindo privacidade total.',
+          'featureList': 'Validação matemática de CPF, Geração de CPF válido para testes, Processamento 100% client-side, Sem envio de dados ao servidor'
+        },
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'Os dados digitados no validador de CPF são salvos?',
+              'acceptedAnswer': { '@type': 'Answer', 'text': 'Não. A validação e geração de CPF ocorrem 100% no seu navegador (client-side) via JavaScript. Nenhum dado é enviado ou armazenado em nossos servidores.' }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Como funciona o algoritmo de validação de CPF?',
+              'acceptedAnswer': { '@type': 'Answer', 'text': 'O CPF possui dois dígitos verificadores calculados pelo algoritmo módulo 11. Cada dígito é obtido multiplicando os números anteriores por pesos decrescentes, somando os resultados e aplicando o resto da divisão por 11.' }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Posso usar o gerador de CPF para testes de software?',
+              'acceptedAnswer': { '@type': 'Answer', 'text': 'Sim. Os CPFs gerados são matematicamente válidos e ideais para testes de software, QA e preenchimento de formulários em ambientes de homologação. Eles não pertencem a nenhuma pessoa real.' }
+            }
+          ]
+        }
+      ]
     }
   },
   {
